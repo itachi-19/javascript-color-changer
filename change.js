@@ -12,6 +12,7 @@ let current_color_el = document.querySelector('b');
 let title = document.getElementById('title');
 let instruction = document.getElementById('instruction');
 let running = false;
+let changer;
 
 function getRandomIdx() {
     return Math.floor(Math.random()*16);
@@ -39,5 +40,14 @@ function change() {
     current_color_el.innerText = new_color;
 }
 
-document.getElementById('change').addEventListener('click', change);
-document.getElementById('reset').addEventListener('click', reset);
+function call_change() {
+    changer = setInterval(change,80);
+}
+
+function call_reset() {
+    clearInterval(changer);
+    reset();
+}
+
+document.getElementById('change').addEventListener('click', call_change);
+document.getElementById('reset').addEventListener('click', call_reset);
