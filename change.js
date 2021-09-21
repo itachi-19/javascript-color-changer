@@ -41,11 +41,15 @@ function change() {
 }
 
 function call_change() {
+    if (changer!==undefined) {
+        return;
+    }
     changer = setInterval(change,80);
 }
 
 function call_reset() {
     clearInterval(changer);
+    changer = undefined;
     reset();
 }
 
